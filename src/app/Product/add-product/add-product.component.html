@@ -1,0 +1,94 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Product</h4>
+                        <p class="card-category">Add New Product</p>
+                    </div>
+                    <div class="card-body">
+                      <form #addproduct="ngForm"  (ngSubmit)="addproduct.valid && saveData(formData)">
+                          <p *ngIf="addproduct.invalid">*All fields Are Compulsory</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="">Sku</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="SKU ID(example: SKU-01)" type="text" name="sku" [(ngModel)]="formData.sku" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6" *ngIf="userType == 'ADMIN'">
+                                    <label for="">Vendor</label>
+                                    <select name="vendorId" [(ngModel)]="formData.vendorId" class="form-control">
+                                      <option value="undefined">Select Vendor</option>
+                                      <option *ngFor="let vendor of vendorList" value="{{vendor._id}}">{{vendor.name}}</option>
+                                    </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="">Category</label>
+                                <select name="categoryId" [(ngModel)]="formData.categoryId" class="form-control" (change)="getCategoryById($event)">
+                                    <option value="undefined">Select Category</option>
+                                    <option *ngFor="let cat of categoryList" value="{{cat._id}}">{{cat.name}}</option>
+                                </select>
+                          </div>
+                                <div class="col-md-6">
+                                    <label for="">Name</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Name" type="text" name="name" [(ngModel)]="formData.name" required>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="">Description</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="description" type="text" name="description" [(ngModel)]="formData.description" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Product Image</label>
+                                    <input type="file" name="product_image" (change)="getProductImage($event)">
+                              </div>
+                                <div class="col-md-12" *ngIf="attribution">
+                                    <label for="">Combination</label><span class="mx-2" *ngFor="let val of this.formData.combination[0].value">{{val}}</span>
+                                    <a href="javascript:void(0)" class="btn btn-primary btn-sm" (click)="addCombination()">Add Combination</a>
+                                    <div class="row">
+                                        <div *ngFor="let comb of this.formData.combination; let i =index">
+                                            <div *ngIf="i!== 0">
+                                                <h3>Combination - {{i}}</h3>
+                                                <label class="mx-2">Combination Inputs</label>
+                                                <div *ngFor="let val of attribution; let j = index">
+                                                    <input type="text" class="mb-1" (blur)="onInputChange($event,i,j)" placeholder="Enter {{val}}">
+                                                </div><br/>
+                                                <label for="">Price</label><br/>
+                                                <input class="mx-2" type="text" name="price_{{i}}" [(ngModel)]="comb.price"><br/>
+                                                <label for="">stock</label><br/>
+                                                <input class="mx-2" type="text" name="stock_{{i}}" [(ngModel)]="comb.stock"><br/>
+                                                <label for="file">Upload Mutiple Images</label><br/>
+                                                <input type="file" name="file" (change)="uploadImages($event,i,j)"><br/>
+                                                <a href="javascript:void(0)" class="btn btn-danger btn-sm" (click)="removeCombination(i)">Remove Combination</a>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Submit</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="imgArr.length">
+                <h3>All Multiple Images Uploaded Preview</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-3" *ngFor="let img of imgArr">
+                         <img src="{{imgUrl}}{{img}}" width="100" height="100" alt="image">
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,72 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title d-lg-inline">Category</h4>
+              <a routerLink="/add-user" class="btn btn-primary btn-sm float-right"
+                >Add New Category</a
+              >
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>Name</th>
+                    <th>Attributes</th>
+                    <th>Status</th>
+                    <th>Register Date</th>
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let user of catList
+                          | paginate
+                            : {
+                                itemsPerPage: 10,
+                                currentPage: p,
+                                totalItems: total
+                              }
+                      "
+                    >
+                      <td>
+                        {{ user?.name}}
+                      </td>
+                      <td>
+                        {{ user?.attribute }}
+                      </td>
+                      <td>
+                        {{ user?.isActive == true ? 'active' : 'Inactive'}}
+                      </td>
+                      <td>
+                        {{user?.created | date:'MMM dd, yyyy'}}
+                      </td>
+                      <td>
+                        <a
+                        routerLink="/add-category/{{ user._id }}"
+                          class="btn btn-primary btn-sm"
+                          >Edit</a
+                        >
+                        <a
+                          href="javascript:void(0)"
+                          (click)="deleteUser(user._id)"
+                          class="btn btn-danger btn-sm"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                  <pagination-controls
+                    (pageChange)="onTableDataChange($event)"
+                  ></pagination-controls>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

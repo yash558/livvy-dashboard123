@@ -1,0 +1,58 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">View Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row text-center">
+                                <div class="col-md-12 text-center">
+                                    <img src="{{imageUrl}}{{userInfo.image}}" alt="Profile Image" class="profile img-fluid rounded-circle mb-3">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Name</label>
+                                     <p>{{userInfo.name ?? ""}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Username</label>
+                                     <p>{{userInfo.username ?? ""}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Email</label>
+                                     <p>{{userInfo.email ?? ""}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Phone Number</label>
+                                     <p>{{userInfo.phoneNumber ?? ""}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Adress</label>
+                                     <p>{{userInfo.address ?? ""}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">User Type</label>
+                                     <p>    {{
+                                        userInfo.userType == "USER"
+                                          ? "User"
+                                          : userInfo.userType == "ADMIN"
+                                          ? "Admin"
+                                          : userInfo.userType == "CREATOR"
+                                          ? "Creator"
+                                          : userInfo.userType == "BUSINESS"
+                                          ? "Business"
+                                          : "Invalid Type"
+                                      }}</p>
+                                </div> 
+                            </div>
+                            <!-- <button mat-raised-button type="submit" class="btn btn-danger pull-right">Submit</button> -->
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

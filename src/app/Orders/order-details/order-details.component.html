@@ -1,0 +1,16 @@
+<div class="row order-details" *ngIf="">
+  <div class="col-sm-6">
+    <img src="{{ orderData.image }}" alt="" />
+  </div>
+
+  <div class="col-sm-6">
+    <div class="details">
+        <h1>{{orderData.name}}</h1>
+        <h3>Price: {{orderData.price}}</h3>
+        <h6>Category: {{orderData.category}}</h6>
+        <h6>Quantity: {{orderData.quantity}}</h6>
+        <h6>Description: {{orderData.description}}</h6>
+    </div>
+  </div>
+
+</div>

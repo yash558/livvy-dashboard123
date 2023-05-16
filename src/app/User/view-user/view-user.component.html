@@ -1,0 +1,104 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title d-lg-inline">Users</h4>
+            <a routerLink="/add-user" class="btn btn-primary btn-sm float-right"
+              >Add New Users</a
+            >
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <!-- <th>
+                                        Name
+                                    </th> -->
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>Change Type</th>
+                  <th>Status</th>
+                  <th>Register Date</th>
+                  <th>Action</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                   <input type="search" class="form-control" (keyup.enter)="searchUsername($event)" placeholder="search username">
+                    </td>
+                    <td>
+                      <input type="search" class="form-control" (keyup.enter)="searchEmail($event)" placeholder="search email">
+                    </td>
+                  </tr>
+                  <tr
+                    *ngFor="
+                      let user of userList
+                        | paginate
+                          : {
+                              itemsPerPage: 10,
+                              currentPage: p,
+                              totalItems: total
+                            }
+                    "
+                  >
+                    <!-- <td>
+                                            {{user.name ?? "No Name"}}
+                                        </td> -->
+                    <td>
+                      {{ user?.username}}
+                    </td>
+                    <td>
+                      {{ user?.email }}
+                    </td>
+                    <td>
+                      <select name="userType" [(ngModel)]="user.userType" (change)="setUserType($event,user._id)" class="form-control">
+                        <option value="undefined">Select</option>
+                        <option value="USER">User</option>
+                        <option value="CREATOR">Creator</option>
+                        <option value="ADMIN">Admin</option>
+                        <option value="BUSINESS">Business</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select name="userType" [(ngModel)]="user.isActive" (change)="setStatus($event,user._id)" class="form-control">
+                        <option value="undefined">Select</option>
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                      </select>
+                    </td>
+                    <td>
+                      {{user?.created | date:'MMM dd, yyyy' }}
+                    </td>
+                    <td>
+                      <a
+                      routerLink="/add-user/{{ user._id }}"
+                        class="btn btn-primary btn-sm"
+                        >Edit</a
+                      >
+                      <a
+                        routerLink="/view-detail/{{ user._id }}"
+                        class="btn btn-primary btn-sm"
+                        >View Details</a
+                      >
+                      <a
+                        href="javascript:void(0)"
+                        (click)="deleteUser(user._id)"
+                        class="btn btn-danger btn-sm"
+                        >Delete</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+                <pagination-controls
+                  (pageChange)="onTableDataChange($event)"
+                ></pagination-controls>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

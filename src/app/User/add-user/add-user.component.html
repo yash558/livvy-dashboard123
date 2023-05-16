@@ -1,0 +1,79 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">User</h4>
+                        <p class="card-category">Add New User</p>
+                    </div>
+                    <div class="card-body">
+                      <form #adduser="ngForm" (ngSubmit)="adduser.valid && saveData(formData)">
+                          <p *ngIf="adduser.invalid">*All feilds Are Compulsory</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <label for="">Name</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Name" type="text" name="name" [(ngModel)]="formData.name" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="">Username</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Username" type="text" name="username" [(ngModel)]="formData.username" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="">Email</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Email address" type="email" name="email" [(ngModel)]="formData.email" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="">Password</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="formData.password" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="">Phone Number</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Phone Number" type="number" name="phoneNumber" [(ngModel)]="formData.phoneNumber" maxlength="10" required>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="">Address</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Address" type="text" name="address" [(ngModel)]="formData.address">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="">User Type</label>
+                                      <select name="userType" [(ngModel)]="formData.userType" class="form-control">
+                                        <option value="undefined">Select Type</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="USER">USER</option>
+                                        <option value="CREATOR">CREATOR</option>
+                                        <option value="BUSINESS">BUSINESS</option>
+                                      </select>
+                                </div>
+                                <div class="col-md-6">
+                                  <label>User Profile Image</label>
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput type="file" (change)="getImage($event)">
+                                    </mat-form-field>
+                                    <div class="image" *ngIf="profile">
+                                      <img src="{{imageUrl}}{{profile}}" alt="profile" width="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Submit</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  

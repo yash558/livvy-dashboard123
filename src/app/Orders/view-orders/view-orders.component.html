@@ -1,0 +1,89 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title d-lg-inline">Orders</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>OrderId</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Payment Status</th>
+                    <th>Ordered Date</th>
+                    <th>Change Order status</th>
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                 <input type="search" class="form-control" (keyup.enter)="searchOrderId($event)" placeholder="search orderId">
+                      </td>
+                      <td>
+                        <input type="search" class="form-control" (keyup.enter)="searchName($event)" placeholder="search name">
+                      </td>
+                    </tr>
+                    <tr
+                      *ngFor="
+                        let user of orderList
+                          | paginate
+                            : {
+                                itemsPerPage: 10,
+                                currentPage: p,
+                                totalItems: total
+                              }
+                      "
+                    >
+                      <td>
+                        {{ user?.orderId}}
+                      </td>
+                      <td>
+                        {{ user.name }}
+                      </td>
+                      <td>
+                        {{ user.address }}
+                      </td>
+                      <td>
+                        {{ user.paymentStatus == 2 ? 'PAID' : 'NOT PAID' }}
+                      </td>
+                      <td>
+                        {{user.created | date:'MMM dd, yyyy' }}
+                      </td>
+                      <td>
+                        <select name="userType" [(ngModel)]="user.orderStatus" (change)="setStatus($event,user._id)" class="form-control">
+                          <option value="undefined">Select</option>
+                          <option value="PLACED">PLACED</option>
+                          <option value="SHIPPED">SHIPPED</option>
+                          <option value="DELIVERED">DELIVERED</option>
+                        </select>
+                      </td>
+                      <td>
+                        <a
+                          routerLink="/view-orderDetail/{{ user.orderId }}"
+                          class="btn btn-primary btn-sm"
+                          >View Details</a
+                        >
+                        <a
+                        routerLink=""
+                        class="btn btn-success btn-sm"
+                        >Dispatch</a
+                      >
+                      </td>
+                    </tr>
+                  </tbody>
+                  <pagination-controls
+                    (pageChange)="onTableDataChange($event)"
+                  ></pagination-controls>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
