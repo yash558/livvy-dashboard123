@@ -1,54 +1,96 @@
-<div class='card'>
-    <div class='card-header'>
-     jj
-    </div>
-  
-    <div class='card-body'>
-      <div class='row'>
-        <div class='col-md-8'>
-          <div class='row'>
-            <div class='col-md-4'>Name:</div>
-            <div class='col-md-8'>jj</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Code:</div>
-            <div class='col-md-8'>hh</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Description:</div>
-            <div class='col-md-8'>hg</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Availability:</div>
-            <div class='col-md-8'>fgdhg</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>Price:</div>
-            <div class='col-md-8'>12</div>
-          </div>
-          <div class='row'>
-            <div class='col-md-4'>5 Star Rating:</div>
-            <div class='col-md-8'>
-              <!-- <pm-star [rating]='product.starRating'>
-              </pm-star> -->
-            </div>
-          </div>
+<!-- <div class="card">
+  <div class="card-header">IPhone 14 Pro Max</div>
+
+  <div class="card-body" *ngIf="">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">Name:</div>
+          <div class="col-md-8">Iphone 14 pro Max</div>
         </div>
-  
-        <div class='col-md-4'>
-          <img class='center-block img-responsive'
-               [style.width.px]='200'
-               [style.margin.px]='2'
-               [src]=''
-               [title]=''>
+        <div class="row">
+          <div class="col-md-4">Code:</div>
+          <div class="col-md-8">gdn 0011</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Description:</div>
+          <div class="col-md-8">Leaf rake with 48-inch wooden handle.</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Availability:</div>
+          <div class="col-md-8">March 19, 2021</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Price:</div>
+          <div class="col-md-8">Rs 1990</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">5 Star Rating:</div>
+          <div class="col-md-8">
+            <pm-star [rating]="product.starRating"> </pm-star>
+          </div>
         </div>
       </div>
-    </div>
-  
-    <div class='card-footer'>
-      <button class='btn btn-outline-secondary'
-              style='width:80px'>
-        <i class='fa fa-chevron-left'></i> Back
-      </button>
+
+      <div class="col-md-4">
+        <img
+          class="center-block img-responsive"
+          [style.width.px]="200"
+          [style.margin.px]="2"
+          [src]=""
+          [title]="product.productName"
+        />
+      </div>
     </div>
   </div>
+
+  <div class="card-footer">
+    <button class="btn btn-outline-secondary" style="width: 80px">
+      <i class="fa fa-chevron-left"></i> Back
+    </button>
+  </div>
+</div> -->
+<div class="card mt-5 mb-5">
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-12 col-lg-12 col-md-12 sol-sm-12">
+        <img
+          height="300"
+          src="data:image/jpeg;base64,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"
+          alt=""
+        />
+        <table class="table table-striped">
+          <tr>
+            <td>Name</td>
+            <td>IPhone 14</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>This product is available in the market</td>
+          </tr>
+          <tr>
+            <td>Code:</td>
+            <td>901023</td>
+          </tr>
+          <tr>
+            <td>Availability</td>
+            <td>This product is available in the market</td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td>Rs 10000</td>
+          </tr>
+          <tr>
+            <td>Rating</td>
+            <td>
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i
+              ><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </td>
+          </tr>
+        </table>
+        <br />
+        <button class="btn btn-warning">Go Back</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,34 @@
-<div class="row order-details" *ngIf="">
-  <div class="col-sm-6">
-    <img src="{{ orderData.image }}" alt="" />
-  </div>
+<h1 class="mt-4">Order Details</h1>
 
-  <div class="col-sm-6">
-    <div class="details">
-        <h1>{{orderData.name}}</h1>
-        <h3>Price: {{orderData.price}}</h3>
-        <h6>Category: {{orderData.category}}</h6>
-        <h6>Quantity: {{orderData.quantity}}</h6>
-        <h6>Description: {{orderData.description}}</h6>
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Order Number: 123</h2>
+    <h3 class="card-subtitle mb-2 text-muted">Order Date: 24/2/2023</h3>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of">
+          <td>Laptop</td>
+          <td>12</td>
+          <td>Rs 56000</td>
+          <td>4000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="card-footer">
+      <h4 class="text-muted">Subtotal: Rs 5000</h4>
+      <h4 class="text-muted">Tax: Rs456</h4>
+      <h4 class="text-muted">Shipping: Rs 50</h4>
+      <h4 class="text-muted">Total: Rs6000</h4>
     </div>
   </div>
-
 </div>
